@@ -1,5 +1,5 @@
 <template>
-  
+  <h1>Job Details View</h1>
 </template>
 
 <script>
