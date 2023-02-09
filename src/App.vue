@@ -1,12 +1,28 @@
 <template>
-  <nav>
+  <div id="nav">
     <router-link :to="{name: 'Home'}">Home</router-link> |
     <router-link :to="{name: 'About'}">About</router-link>|
     <router-link :to="{name: 'Jobs'}">jobs</router-link>
     <!-- <router-link :to="{name: 'JobDetails'}">JobDetails</router-link> -->
-  </nav>
+  </div>
+  <button @click="redirect">Redirect</button>
+  <button @click="back">Go Back</button>
+  <button @click="forward">Go Forward</button>
   <router-view/>
 </template>
+<script>
+// import { defineComponent } from '@vue/composition-api'
+
+export default ({
+  methods: {
+    redirect() {this.$router.push({name:"Home"})},
+    back() {
+      this.$router.go(-1)
+    },
+    forward() {this.$router.go(1)},
+  },
+})
+</script>
 
 <style>
 #app {
@@ -17,11 +33,11 @@
   color: #2c3e50;
 }
 
-nav {
+#nav {
   padding: 30px;
 }
 
-nav a {
+#nav a {
   font-weight: bold;
   color: #2c3e50;
   text-decoration: none;
@@ -29,9 +45,15 @@ nav a {
   border-radius: .25rem;
 }
 
-nav a.router-link-exact-active {
+#nav a.router-link-exact-active {
   color: #ffffff;
   background: crimson;
+}
+button {
+  margin: 0 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
 }
 </style>
  
